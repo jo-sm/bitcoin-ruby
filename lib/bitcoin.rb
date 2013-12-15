@@ -666,7 +666,34 @@ module Bitcoin
       :known_nodes => ["178.32.31.41"],
       :checkpoints => {
         0 => "000000000062b72c5e2ceb45fbc8587e807c155b0da735e6483dfba2f0a9c770",
+      }
+    },
 
+    :dogecoin => {
+      :project => :dogecoin,
+      # :magic_head => "\xfb\xc0\xb6\xdb",
+      # :address_version => "30",
+      # :p2sh_version => "05",
+      # :privkey_version => "b0",
+      # :default_port => 9333,
+      :protocol_version => 60003,
+      :max_money => 500_000_000 * COIN,
+      :min_tx_fee => 10_000,
+      :min_relay_tx_fee => 10_000,
+      :coinbase_maturity => 30,
+      :retarget_interval => (4 * 60),
+      :retarget_time => (4 * 60 * 60), # 4 hours
+      :dns_seeds => [
+      ],
+      :genesis_hash => "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691",
+      :proof_of_work_limit => 0,
+      :alert_pubkeys => [],
+      :known_nodes => [
+        "95.85.29.144",
+        "162.243.113.110",
+        "146.185.181.114"
+      ],
+      :checkpoints => {
       }
     },
   }
