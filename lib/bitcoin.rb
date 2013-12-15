@@ -675,7 +675,7 @@ module Bitcoin
       # :address_version => "30",
       # :p2sh_version => "05",
       # :privkey_version => "b0",
-      # :default_port => 9333,
+      :default_port => 22556,
       :protocol_version => 60003,
       :max_money => 500_000_000 * COIN,
       :min_tx_fee => 10_000,
