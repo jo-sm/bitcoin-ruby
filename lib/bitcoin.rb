@@ -671,8 +671,8 @@ module Bitcoin
 
     :dogecoin => {
       :project => :dogecoin,
-      :magic_head => "\xfc\xc1\xb7\xdc",
-      :address_version => "30",
+      :magic_head => "\xc0\xc0\xc0\xc0",
+      :address_version => "1e",
       :p2sh_version => "22",
       :privkey_version => "9e",
       :default_port => 22556,
