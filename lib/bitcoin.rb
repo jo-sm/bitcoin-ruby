@@ -164,7 +164,7 @@ module Bitcoin
     alias_method :base58_to_hex, :decode_base58
 
     # target compact bits (int) to bignum hex
-    def decode_compact_bits(bits)
+    def decode_compact_bits(bits=0)
       bytes = Array.new(size=((bits >> 24) & 255), 0)
       bytes[0] = (bits >> 16) & 255 if size >= 1
       bytes[1] = (bits >>  8) & 255 if size >= 2
