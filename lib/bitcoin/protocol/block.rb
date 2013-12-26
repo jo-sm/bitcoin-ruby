@@ -227,6 +227,10 @@ module Bitcoin
         target = Bitcoin.decode_compact_bits(@bits)
         (2**256) / (target.to_i(16) + 1)
       end
+      def base16_hash
+        return 0 if !hash
+        return hash.to_i(16)
+      end
 
     end
 
