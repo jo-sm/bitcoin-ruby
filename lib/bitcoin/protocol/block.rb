@@ -56,9 +56,9 @@ module Bitcoin
       end
 
       # create block from raw binary +data+
-      def initialize(data, header_only=false)
+      def initialize(data=nil, header_only=false)
         @tx = []
-        parse_data_from_io(data, header_only)
+        parse_data_from_io(data, header_only) if data
       end
 
       # parse raw binary data
