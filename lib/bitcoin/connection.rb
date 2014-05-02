@@ -107,7 +107,7 @@ module Bitcoin
     def self.connect_random_from_dns(connections)
       seeds = Bitcoin.network[:dns_seeds]
       if seeds.any?
-        host = IPSocket.getaddress(dns)
+        host = IPSocket.getaddress(seeds.sample)
         connect(host, Bitcoin::network[:default_port], connections)
       else
         raise "No DNS seeds available. Provide IP, configure seeds, or use different network."
