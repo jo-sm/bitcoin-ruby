@@ -65,17 +65,20 @@ module Bitcoin::Validation
     end
 
     # check that block hash matches header
+    # valid for Bitcoin and litecoin
     def hash
       claimed = block.hash; real = block.recalc_block_hash
       claimed == real || [claimed, real]
     end
 
     # check that block has at least one tx (the coinbase)
+    # valid for both
     def tx_list
       block.tx.any? || block.tx.size
     end
 
     # check that block hash matches claimed bits
+    # valid for only bitcoin, as the target hash is different for Litecoin
     def bits
       actual = block.hash.to_i(16)
       expected = Bitcoin.decode_compact_bits(block.bits).to_i(16)
@@ -89,18 +92,21 @@ module Bitcoin::Validation
     end
 
     # check that coinbase is present
+    # how does it check for coinbase?
     def coinbase
       coinbase, *rest = block.tx.map{|t| t.inputs.size == 1 && t.inputs.first.coinbase? }
       (coinbase && rest.none?) || [coinbase ? 1 : 0, rest.select{|r| r}.size]
     end
 
     # check that coinbase scriptsig is valid
+    # is this valid?
     def coinbase_scriptsig
       size = block.tx.first.in.first.script_sig.bytesize
       size.between?(2,100) || [size, 2, 100]
     end
 
     # check that coinbase value is valid; no more than reward + fees
+    # probably works for bitcoin but not sure about Litecoin/Dogecoin
     def coinbase_value
       reward = ((50.0 / (2 ** (store.get_depth / REWARD_DROP.to_f).floor)) * 1e8).to_i
       fees = 0

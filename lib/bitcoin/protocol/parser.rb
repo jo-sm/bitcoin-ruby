@@ -71,7 +71,7 @@ module Bitcoin
       def process_pkt(command, payload)
         case command
         when 'tx';       @h.on_tx( Tx.new(payload) )
-        when 'block';    @h.on_block( Block.new(payload) )
+        when 'block';    @h.on_block( Block.new(payload), payload )
         when 'headers';  parse_headers(payload)
         when 'inv';      parse_inv(payload, :put)
         when 'getdata';  parse_inv(payload, :get)
